@@ -20,6 +20,7 @@ const SMSLogin = ({ onSMSSubmit, disabled }: props) => {
       toast.warn("Input valid phone number!");
       return;
     }
+    
     onSMSSubmit(phoneNum);
   };
 

@@ -5,7 +5,6 @@ export const validateEmail = (email: string) => {
 };
 
 export const validatePhoneNum = (phoneNum: string) => {
-  const validPhoneNumber =
-    /^[+]{1}(?:[0-9\-\(\)\/\.]\s?){6, 15}[0-9]{1}$/;
+  const validPhoneNumber = /^[+]{1}(?:[0-9\-\(\)\/\.]\s?){6,15}[0-9]{1}$/;
   return validPhoneNumber.test(phoneNum);
 };
