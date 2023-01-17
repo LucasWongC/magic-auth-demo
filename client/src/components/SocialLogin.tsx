@@ -16,7 +16,7 @@ const SocialLogins = ( {onSubmit}: props) => {
           <div key={provider}>
             <button
               type='submit'
-              className='flex justify-center cursor-pointer rounded-full mb-5 border-2 border-[#8a8a8a] px-6 py-2 w-4/5 bg-white bg-no-repeat mx-auto'
+              className='flex justify-center items-center cursor-pointer rounded-full mb-5 border-2 border-[#8a8a8a] px-6 py-2 w-4/5 bg-white bg-no-repeat mx-auto'
               onClick={() => {
                 setIsRedirecting(true);
                 onSubmit(provider);

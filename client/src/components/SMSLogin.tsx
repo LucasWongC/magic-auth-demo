@@ -1,6 +1,8 @@
 import { useState, useRef } from "react";
 import { toast } from "react-toastify";
 
+import { validatePhoneNum } from "lib/utils";
+
 interface props {
   onSMSSubmit: Function;
   disabled: boolean;
@@ -10,20 +12,14 @@ const SMSLogin = ({ onSMSSubmit, disabled }: props) => {
   const [phoneNum, setPhoneNum] = useState<string>("");
   const ref = useRef<HTMLInputElement>(null);
 
-  const validatePhoneNum = (phoneNum: string) => {
-    const validPhoneNumber =
-      /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-    return validPhoneNumber.test(phoneNum);
-  };
-
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    // const isValid = validatePhoneNum(phoneNum);
-    // if (!isValid) {
-    //   ref.current?.focus();
-    //   toast.warn("Input valid phone number!");
-    //   return;
-    // }
+    const isValid = validatePhoneNum(phoneNum);
+    if (!isValid) {
+      ref.current?.focus();
+      toast.warn("Input valid phone number!");
+      return;
+    }
     onSMSSubmit(phoneNum);
   };
 

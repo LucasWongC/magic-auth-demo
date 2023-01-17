@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import Web3 from "web3";
+
 import Loading from "./Loading";
 import { magic } from "lib/magic";
-import Web3 from "web3";
+import { validateEmail } from "lib/utils";
+import { toast } from "react-toastify";
 
 const Profile = (props: any) => {
   const [email, setEmail] = useState<string>("");
@@ -11,17 +14,25 @@ const Profile = (props: any) => {
   const [message, setMessage] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const { user, setUser } = props;
+  const ref = useRef<HTMLInputElement>(null);
 
   const web3 = new Web3(magic.rpcProvider);
 
   const updateEmail = async () => {
     try {
+      const isValid = validateEmail(email);
+      if (!isValid) {
+        toast.warn("Input valid email address!");
+        ref.current?.focus();
+        return;
+      }
       await magic.user.updateEmail({
         email: email,
         showUI: true,
       });
       const metadata = await magic.user.getMetadata();
       setUser(metadata);
+      setEmail("");
     } catch (error) {
       console.log(error);
     }
@@ -47,11 +58,12 @@ const Profile = (props: any) => {
         address,
         "password"
       );
-      alert(`Signed Message:\ ${signedMessage}`);
+      alert(`Signed Message: ${signedMessage}`);
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
     <>
       {user?.loading ? (
@@ -59,20 +71,28 @@ const Profile = (props: any) => {
       ) : (
         user?.issuer && (
           <>
-            <div>
-              <p className="mt-8 mx-auto">Email: {user.email}</p>
-              <input
-                className="block rounded border border-gray-400 p-2 focus:outline-[#6851FF] my-4"
-                placeholder="Enter new email"
-                value={email}
-                onChange={(e: any) => setEmail(e.target.value)}
-              />
-              <button
-                className="px-6 py-2 rounded-full text-white bg-[#6851FF] hover:bg-[#4E3BDB] duration-300"
-                onClick={updateEmail}
-              >
-                Update Email
-              </button>
+            <div className="flex">
+              <div className="flex-grow">
+                <p className=" mx-auto">Email: {user.email}</p>
+                <input
+                  className="block rounded border border-gray-400 p-2 focus:outline-[#6851FF] my-4"
+                  placeholder="Enter new email"
+                  value={email}
+                  ref={ref}
+                  onChange={(e: any) => setEmail(e.target.value)}
+                />
+                <button
+                  className="px-6 py-2 rounded-full text-white bg-[#6851FF] hover:bg-[#4E3BDB] duration-300"
+                  onClick={updateEmail}
+                >
+                  Update Email
+                </button>
+              </div>
+              {user.phoneNumber && (
+                <div className="flex-grow">
+                  <p>Phone Number: {user.phoneNumber}</p>
+                </div>
+              )}
             </div>
             <div>
               <div className="mt-8 mx-auto">User Id: {user.issuer}</div>

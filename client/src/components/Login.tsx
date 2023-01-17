@@ -55,6 +55,9 @@ const Login = (props: any) => {
       await magic.auth.loginWithSMS({
         phoneNumber: phoneNum,
       });
+      const metadata = await magic.user.getMetadata();
+      setUser(metadata)
+      navigate("/profile")
     } catch (error) {
       console.log(error);
       setDisabled(false);

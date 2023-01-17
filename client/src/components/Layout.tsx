@@ -6,7 +6,7 @@ const Layout = (props: any) => {
   return (
     <>
       <Header user={user} logout={logout}/>
-      <main>
+      <main className="mt-10">
         <div className="w-4/5 mx-auto">{props.children}</div>
       </main>
     </>

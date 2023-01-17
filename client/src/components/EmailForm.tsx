@@ -1,6 +1,8 @@
 import { useState, useRef } from "react";
 import { toast } from "react-toastify";
 
+import { validateEmail } from "lib/utils";
+
 interface props {
   onEmailSubmit: Function;
   disabled: boolean;
@@ -8,12 +10,6 @@ interface props {
 const EmailForm = ({ onEmailSubmit, disabled }: props) => {
   const [email, setEmail] = useState("");
   const ref = useRef<HTMLInputElement>(null);
-
-  const validateEmail = (email: string) => {
-    const validRegex =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return validRegex.test(String(email).toLowerCase());
-  };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
