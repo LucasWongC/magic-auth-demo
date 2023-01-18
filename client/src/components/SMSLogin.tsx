@@ -29,7 +29,7 @@ const SMSLogin = ({ onSMSSubmit, disabled }: props) => {
       <form className="flex flex-col text-center" onSubmit={handleSubmit}>
         <div className="mx-auto my-5">
           <input
-            className="rounded border border-gray-400 p-2 focus:outline-[#6851FF]"
+            className="rounded border border-gray-400 p-2 focus:outline-[#3EDBB5]"
             placeholder="Enter your phone number"
             value={phoneNum}
             ref={ref}
@@ -38,7 +38,7 @@ const SMSLogin = ({ onSMSSubmit, disabled }: props) => {
         </div>
         <div>
           <button
-            className="px-6 py-2 rounded-full text-white bg-[#6851FF] hover:bg-[#4E3BDB] duration-300"
+            className="px-6 py-2 rounded-full text-white bg-[#3EDBB5] hover:bg-[#1c9b7b] duration-300"
             type="submit"
             onClick={handleSubmit}
             disabled={disabled}

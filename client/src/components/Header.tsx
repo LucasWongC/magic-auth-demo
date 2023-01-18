@@ -23,7 +23,7 @@ const Header = (props: any) => {
               </li>
               <li className="mr-6 ml-0">
                 <button
-                  className="px-6 py-2 rounded-full text-white bg-[#6851FF] hover:bg-[#4E3BDB] duration-300"
+                  className="px-6 py-2 rounded-full text-white bg-[#3EDBB5] hover:bg-[#1c9b7b] duration-300"
                   onClick={logout}
                 >
                   Logout
@@ -33,7 +33,7 @@ const Header = (props: any) => {
           ) : (
             <li className="mr-6 ml-0">
               <Link
-                className="px-6 py-2 rounded-full text-white bg-[#6851FF] hover:bg-[#4E3BDB] duration-300"
+                className="px-6 py-2 rounded-full text-white bg-[#3EDBB5] hover:bg-[#1c9b7b] duration-300"
                 to="/login"
               >
                 Let's start

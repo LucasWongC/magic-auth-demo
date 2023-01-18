@@ -75,14 +75,14 @@ const Profile = (props: any) => {
               <div className="flex-grow">
                 <p className=" mx-auto">Email: {user.email}</p>
                 <input
-                  className="block rounded border border-gray-400 p-2 focus:outline-[#6851FF] my-4"
+                  className="block rounded border border-gray-400 p-2 focus:outline-[#3EDBB5] my-4"
                   placeholder="Enter new email"
                   value={email}
                   ref={ref}
                   onChange={(e: any) => setEmail(e.target.value)}
                 />
                 <button
-                  className="px-6 py-2 rounded-full text-white bg-[#6851FF] hover:bg-[#4E3BDB] duration-300"
+                  className="px-6 py-2 rounded-full text-white bg-[#3EDBB5] hover:bg-[#1c9b7b] duration-300"
                   onClick={updateEmail}
                 >
                   Update Email
@@ -97,7 +97,7 @@ const Profile = (props: any) => {
             <div>
               <div className="mt-8 mx-auto">User Id: {user.issuer}</div>
               <button
-                className="px-6 py-2 rounded-full text-white bg-[#6851FF] hover:bg-[#4E3BDB] duration-300 my-4"
+                className="px-6 py-2 rounded-full text-white bg-[#3EDBB5] hover:bg-[#1c9b7b] duration-300 my-4"
                 onClick={connectWallet}
               >
                 Connect Wallet
@@ -113,18 +113,18 @@ const Profile = (props: any) => {
                 <div>
                   <label className="block">Message:</label>
                   <textarea
-                    className="rounded border border-gray-400 p-2 focus:outline-[#6851FF] mb-2 w-[200px]"
+                    className="rounded border border-gray-400 p-2 focus:outline-[#3EDBB5] mb-2 w-[200px]"
                     onChange={(e: any) => setMessage(e.target.value)}
                   />
                   <label className="block">Password:</label>
                   <input
                     type="password"
-                    className="block rounded border border-gray-400 p-2 focus:outline-[#6851FF] mb-2"
+                    className="block rounded border border-gray-400 p-2 focus:outline-[#3EDBB5] mb-2"
                     value={password}
                     onChange={(e: any) => setPassword(e.target.value)}
                   />
                   <button
-                    className="px-6 py-2 rounded-full text-white bg-[#6851FF] hover:bg-[#4E3BDB] duration-300 my-4"
+                    className="px-6 py-2 rounded-full text-white bg-[#3EDBB5] hover:bg-[#1c9b7b] duration-300 my-4"
                     onClick={signMessage}
                   >
                     Sign Message
